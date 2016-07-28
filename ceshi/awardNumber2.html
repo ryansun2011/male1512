@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>未成功组团人数</title>
+    <style type="text/css">
+        *{list-style:none;}
+        li{float:left;}
+        .li1{width:700px;}
+        input{width:200px;}
+
+    </style>
+</head>
+<body>
+开始时间：<input type="text" class="ipt1" name="" value="2016-1-18"><br><br>
+结束时间：<input type="text" class="ipt2" name="" value="2016-1-19">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="ipt3" type="button" name="" value="提交"><br><br>
+<div></div>
+<ul>
+
+</ul>
+</body>
+<script src="js/jquery-2.1.4.js"></script>
+<script>
+    $('.ipt3').click(function(){
+        var ipt1 = $('.ipt1').val();
+        var ipt2 = $('.ipt2').val();
+        $.ajax({
+            url:'http://www.philips-campaign.com/male1512/ceshi/awardNumber2.php',
+            dataType:'json',
+            type:'post',
+            data:{startTime:ipt1,endTime:ipt2}
+        }).done(function(data){
+            console.log(data)
+            var arr = data.info;
+            $('div').html('未成功组团人数:'+arr.length/2);
+            // alert(arr[0])
+            for(var i=0;i<arr.length;i+=2){
+
+                var str = '<li class="li1">'+arr[i]+'</li><li>'+arr[i+1]+'</li><br>'
+                $('ul').append(str);
+            }
+        })
+    })
+</script>
+</html>

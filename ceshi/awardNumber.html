@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组团成功人数</title>
+    <style type="text/css">
+        *{list-style:none;}
+        li{float:left;}
+        .li1{width:700px;}
+        input{width:200px;}
+
+    </style>
+</head>
+<body>
+开始时间：<input type="text" class="ipt1" name="" value="2016-1-18"><br><br>
+结束时间：<input type="text" class="ipt2" name="" value="2016-1-19"><br><br>
+<input class="ipt3" type="button" name="" value="查询微信名">
+<input class="ipt4" type="button" name="" value="查询性别">
+<input class="ipt5" type="button" name="" value="查询所属媒体">
+<input class="ipt6" type="button" name="" value="查询姓名">
+<input class="ipt7" type="button" name="" value="查询电话">
+
+<br><br>
+<div></div>
+<ul class = "ip3"></ul>
+<ul class = "ip4"></ul>
+<ul class = "ip5"></ul>
+<ul class = "ip6"></ul>
+<ul class = "ip7"></ul>
+
+</body>
+<script src="js/jquery-2.1.4.js"></script>
+<script>
+    $('.ipt3').click(function(){
+        var ipt1 = $('.ipt1').val();
+        var ipt2 = $('.ipt2').val();
+        $('.ip3').html('');
+        $('.ip4').html('');
+        $('.ip5').html('');
+        $('.ip6').html('');
+        $('.ip7').html('');
+        $.ajax({
+            url:'http://www.philips-campaign.com/male1512/ceshi/awardNumber.php',
+            dataType:'json',
+            type:'post',
+            data:{startTime:ipt1,endTime:ipt2}
+        }).done(function(data){
+            console.log(data)
+            var arr = data.info;
+            $('div').html('组团成功人数:'+arr.length/5);
+           // alert(arr[0])
+            for(var i=0;i<arr.length;i+=5){
+                var str = '<li class="li1">'+arr[i]+'</li>'
+                $('.ip3').append(str);
+            }
+        })
+    })
+    $('.ipt4').click(function(){
+        var ipt1 = $('.ipt1').val();
+        var ipt2 = $('.ipt2').val();
+        $('.ip3').html('');
+        $('.ip4').html('');
+        $('.ip5').html('');
+        $('.ip6').html('');
+        $('.ip7').html('');
+        $.ajax({
+            url:'http://www.philips-campaign.com/male1512/ceshi/awardNumber.php',
+            dataType:'json',
+            type:'post',
+            data:{startTime:ipt1,endTime:ipt2}
+        }).done(function(data){
+            console.log(data)
+            var arr = data.info;
+            $('div').html('组团成功人数:'+arr.length/5);
+            // alert(arr[0])
+
+
+            for(var i=1;i<arr.length;i+=5){
+                var str = '<li class="li1">'+arr[i]+'</li>'
+                $('.ip4').append(str);
+            }
+        })
+    })
+
+    $('.ipt5').click(function(){
+        var ipt1 = $('.ipt1').val();
+        var ipt2 = $('.ipt2').val();
+        $('.ip3').html('');
+        $('.ip4').html('');
+        $('.ip5').html('');
+        $('.ip6').html('');
+        $('.ip7').html('');
+        $.ajax({
+            url:'http://www.philips-campaign.com/male1512/ceshi/awardNumber.php',
+            dataType:'json',
+            type:'post',
+            data:{startTime:ipt1,endTime:ipt2}
+        }).done(function(data){
+            console.log(data)
+            var arr = data.info;
+            $('div').html('组团成功人数:'+arr.length/5);
+            // alert(arr[0])
+            for(var i=2;i<arr.length;i+=5){
+                var str = '<li class="li1">'+arr[i]+'</li>'
+                $('.ip5').append(str);
+            }
+        })
+    })
+
+    $('.ipt6').click(function(){
+        var ipt1 = $('.ipt1').val();
+        var ipt2 = $('.ipt2').val();
+        $('.ip3').html('');
+        $('.ip4').html('');
+        $('.ip5').html('');
+        $('.ip6').html('');
+        $('.ip7').html('');
+        $.ajax({
+            url:'http://www.philips-campaign.com/male1512/ceshi/awardNumber.php',
+            dataType:'json',
+            type:'post',
+            data:{startTime:ipt1,endTime:ipt2}
+        }).done(function(data){
+            console.log(data)
+            var arr = data.info;
+            $('div').html('组团成功人数:'+arr.length/5);
+            // alert(arr[0])
+            for(var i=3;i<arr.length;i+=5){
+                var str = '<li class="li1">'+arr[i]+'</li>'
+                $('.ip6').append(str);
+            }
+        })
+    })
+
+    $('.ipt7').click(function(){
+        var ipt1 = $('.ipt1').val();
+        var ipt2 = $('.ipt2').val();
+        $('.ip3').html('');
+        $('.ip4').html('');
+        $('.ip5').html('');
+        $('.ip6').html('');
+        $('.ip7').html('');
+        $.ajax({
+            url:'http://www.philips-campaign.com/male1512/ceshi/awardNumber.php',
+            dataType:'json',
+            type:'post',
+            data:{startTime:ipt1,endTime:ipt2}
+        }).done(function(data){
+            console.log(data)
+            var arr = data.info;
+            $('div').html('组团成功人数:'+arr.length/5);
+            // alert(arr[0])
+            for(var i=4;i<arr.length;i+=5){
+                var str = '<li class="li1">'+arr[i]+'</li>'
+                $('.ip7').append(str);
+            }
+        })
+    })
+</script>
+</html>

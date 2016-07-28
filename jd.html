@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+		<title>jd</title>
+		<style>
+
+		</style>
+	</head>
+	<body>
+	<script src="js/jquery-2.1.4.js" type="text/javascript"></script>
+		<script>
+		$.ajax({
+			url:'jd.php?callback=?',
+			dataType:"jsonp"
+		}).done(function(data){
+			alert(1);
+			alert(data.result);
+			console.log(1,data);
+			
+		}).always(function(data){
+			alert(2);
+			for(var i in data){
+				alert(i);
+			}
+			alert(data.result);
+			console.log(2,data);
+		});
+		</script>
+	</body>
+</html>

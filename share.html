@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="target-densitydpi=device-dpi,width=640, user-scalable=no" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/mian.css?v=11">
+    <link rel="stylesheet" href="css/animate.css"/>
+	<script>
+
+	</script>
+</head>
+<body>
+
+<script src="js/jquery-2.1.4.js" type="text/javascript"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="js/share.js"></script>
+<script src="js/js.cookie.js"></script>
+<script>
+	function trackBaidu(str){
+		_hmt.push(['_trackPageview', '/'+str]);
+	}
+
+	function parseURL(url) {
+		var a =  document.createElement('a');
+		a.href = url;
+		return {
+			source: url,
+			protocol: a.protocol.replace(':',''),
+			host: a.hostname,
+			port: a.port,
+			query: a.search,
+			params: (function(){
+				var ret = {},
+					seg = a.search.replace(/^\?/,'').split('&'),
+					len = seg.length, i = 0, s;
+				for (;i<len;i++) {
+					if (!seg[i]) { continue; }
+					s = seg[i].split('=');
+					ret[s[0]] = s[1];
+				}
+				return ret;
+			})(),
+			file: (a.pathname.match(/\/([^\/?#]+)$/i) || [,''])[1],
+			hash: a.hash.replace('#',''),
+			path: a.pathname.replace(/^([^\/])/,'/$1'),
+			relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [,''])[1],
+			segments: a.pathname.replace(/^\//,'').split('/')
+		};
+	}
+
+	var phase = 'ft';
+
+	var hmsr,share;
+	var myURL = parseURL(location.href);
+	hmsr = myURL.params.hmsr;
+
+
+	var media = phase+'/media'+hmsr+'/';
+
+	shareData.link = shareData2.link ='http://www.philips-campaign.com/male1512/index.php?hmsr='+hmsr
+	//shareData.link = shareData2.link ='http://www.philips-campaign.com/male1512/share.html?hmsr='+hmsr
+	shareData.success = shareData2.success = function (res) {
+		trackBaidu(media+'分享完成');
+	}
+
+	document.write(shareData.link);
+</script>
+</body>
+</html>
